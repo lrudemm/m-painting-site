@@ -1,0 +1,258 @@
+/* ============================
+   Style Guide Variables
+   ============================ */
+:root {
+  --stone: #f4f4f2;
+  --stone-dark: #0c97c5;
+  --ink: #1f2421;
+  --pine: #2f5d50;
+  --pine-dark: #234942;
+  --gold: #b08d57;
+  --line: #d9d4c7;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+
+  --radius: 4px;
+  --max-width: 1100px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; }
+
+/* ============================
+   Header (Flexbox: logo + wordmark in a row)
+   ============================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo-badge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--pine);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--pine);
+  font-size: 0.9rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--pine);
+}
+
+.wordmark span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+/* ============================
+   Navigation bar (Flexbox row, wraps on small screens) will be eventualy hamburger menu on mobile
+   ============================ */
+.site-nav {
+  background: var(--stone-dark);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.nav-list a {
+  font-size: 0.9rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a.current,
+.nav-list a:hover {
+  border-bottom-color: var(--gold);
+}
+
+/* ============================
+   Hero (Flexbox, centered content, CTA button)
+   ============================ */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 420px;
+  padding: var(--space-lg) var(--space-sm);
+  /* Dark overlay gradient on top of the photo keeps the white text readable
+     regardless of how bright/busy the photo underneath is. */
+  background:
+    linear-gradient(180deg, rgba(31, 36, 33, 0.55), rgba(31, 36, 33, 0.65)),
+    url('../media/Hero.png') center / cover no-repeat;
+  color: var(--stone);
+}
+
+.hero-content {
+  max-width: 40ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--stone);
+}
+
+.hero-content p {
+  margin: 0;
+  color: var(--stone);
+  opacity: 0.9;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  padding: 0.65rem 1.4rem;
+  border: 1.5px solid var(--stone);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.cta-button:hover {
+  background: var(--stone);
+  color: var(--pine-dark);
+}
+
+/* ============================
+   Main / introduction
+   ============================ */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.intro {
+  max-width: 65ch;
+  margin: var(--space-lg) auto;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-sm);
+}
+
+.intro p {
+  color: #4b5450;
+  margin: 0;
+}
+
+/* ============================
+   Feature rows (Grid: image | content — mobile-first single column)
+   ============================ */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.feature-row:last-of-type {
+  border-bottom: none;
+}
+
+.feature-image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.feature-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xs);
+}
+
+.feature-content p {
+  color: #4b5450;
+  margin: 0 0 var(--space-sm);
+}
+
+.feature-link {
+  font-weight: 600;
+  color: var(--pine-dark);
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 1px;
+}
+
+/* ============================
+   Footer
+   ============================ */
+.site-footer {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: whitesmoke;
+  background: var(--stone-dark);
+}
+
+/* ============================
+   Responsive breakpoint: wider screens get two-column feature rows
+   ============================ */
+@media (min-width: 640px) {
+  .feature-row {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .feature-image img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}

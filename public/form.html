@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Inquiry & Commission Form</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/form_style.css">
+</head>
+<body>
+     <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="logo-badge" aria-hidden="true">MR</div>
+    <p class="wordmark">Meghan Rud <span>~ Painting</span></p>
+  </header>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#for-sale">Paintings for Sale</a></li>
+      <li><a href="#sold">Sold</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="form.html" class="current">Contact</a></li>
+    </ul>
+  </nav>
+    <div class="container">
+        <h1>Get in Touch</h1>
+        <p class="intro">Have a question about my work or interested in commissioning a painting? Fill out this form and I'll get back to you shortly.</p>
+
+        <form id="inquiryForm" novalidate>
+
+            <!-- Contact Information Fieldset -->
+            <fieldset>
+                <legend>Your Information</legend>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName"
+                        required
+                        minlength="2"
+                        maxlength="50"
+                        aria-describedby="fullNameError"
+                    >
+                    <div id="fullNameError" class="error-message" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        required
+                        aria-describedby="emailError"
+                    >
+                    <div id="emailError" class="error-message" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone"
+                        required
+                        pattern="^\d{3}-\d{3}-\d{4}$"
+                        title="Phone format: 555-555-5555"
+                        placeholder="555-555-5555"
+                        aria-describedby="phoneError"
+                    >
+                    <div id="phoneError" class="error-message" role="alert"></div>
+                </div>
+
+            </fieldset>
+
+            <!-- Inquiry Type Fieldset -->
+            <fieldset>
+                <legend>Inquiry Type</legend>
+
+                <div class="form-group radio-group">
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="inquiryType" 
+                            value="question"
+                            required
+                            aria-describedby="inquiryTypeError"
+                        >
+                        <span>General Question About My Work</span>
+                    </label>
+                </div>
+
+                <div class="form-group radio-group">
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="inquiryType" 
+                            value="commission"
+                            required
+                        >
+                        <span>Commission a Painting</span>
+                    </label>
+                </div>
+
+                <div id="inquiryTypeError" class="error-message" role="alert"></div>
+
+            </fieldset>
+
+            <!-- Commission Details Fieldset -->
+            <fieldset>
+                <legend>Painting Details</legend>
+
+                <div class="form-group">
+                    <label for="medium">Preferred Medium *</label>
+                    <select 
+                        id="medium" 
+                        name="medium"
+                        required
+                        aria-describedby="mediumError"
+                    >
+                        <option value="">-- Select a medium --</option>
+                        <option value="oil">Oil</option>
+                        <option value="acrylic">Acrylic</option>
+                        <option value="watercolor">Watercolor</option>
+                        <option value="mixed">Mixed Media</option>
+                        <option value="nopreference">No Preference</option>
+                    </select>
+                    <div id="mediumError" class="error-message" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="estimatedSize">Estimated Size (in inches) *</label>
+                    <input 
+                        type="text" 
+                        id="estimatedSize" 
+                        name="estimatedSize"
+                        placeholder="e.g., 24x36 or 16x20"
+                        pattern="^\d{1,4}x\d{1,4}$"
+                        title="Format: WIDTHxHEIGHT (e.g., 24x36)"
+                        aria-describedby="estimatedSizeError"
+                    >
+                    <div id="estimatedSizeError" class="error-message" role="alert"></div>
+                </div>
+
+            </fieldset>
+
+            <!-- Message Fieldset -->
+            <fieldset>
+                <legend>Your Message</legend>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea 
+                        id="message" 
+                        name="message"
+                        required
+                        minlength="10"
+                        maxlength="1000"
+                        placeholder="Tell me about your inquiry or commission details..."
+                        rows="6"
+                        aria-describedby="messageError messageHint"
+                    ></textarea>
+                    <div id="messageHint" class="hint-text">Minimum 10 characters</div>
+                    <div id="messageError" class="error-message" role="alert"></div>
+                </div>
+
+            </fieldset>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Send Inquiry</button>
+                <button type="reset" class="btn-reset">Clear Form</button>
+            </div>
+
+            <div id="successMessage" class="success-message" role="status" aria-live="polite"></div>
+
+        </form>
+    </div>
+
+    <br>
+     <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Meghan Rud ~ Painting. Original artwork, made in Jacksonville, FL.</p>
+  </footer>
+
+
+    <script src="validate.js"></script>
+</body>
+</html>

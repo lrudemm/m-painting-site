@@ -1,0 +1,294 @@
+/* ============================
+   Form-Specific Styles
+   (Inherits typography, colors, spacing from capstone-main.css)
+   ============================ */
+
+/* Form container and general layout */
+.form-container {
+  max-width: 600px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-md);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.form-intro {
+  max-width: 55ch;
+  margin: 0 0 var(--space-md);
+  color: #4b5450;
+}
+
+/* Fieldset and Legend */
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  background: var(--stone);
+}
+
+fieldset:focus-within {
+  border-color: var(--pine-dark);
+  background: rgba(47, 93, 80, 0.02);
+}
+
+legend {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--pine-dark);
+  padding: 0 var(--space-xs);
+  font-size: 1.1rem;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Labels */
+.form-group label {
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+/* Helper text */
+.hint-text {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: var(--space-xs);
+  display: block;
+}
+
+/* Input Fields, Select, Textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
+  background-color: white;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--pine-dark);
+  box-shadow: 0 0 0 3px rgba(35, 73, 66, 0.08);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+}
+
+/* Select Dropdown - custom styling */
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232f5d50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-sm) center;
+  padding-right: 2.5rem;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Radio Buttons */
+.radio-group {
+  margin-bottom: var(--space-sm);
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-sm);
+  cursor: pointer;
+  accent-color: var(--pine-dark);
+  flex-shrink: 0;
+}
+
+.radio-group span {
+  flex: 1;
+  color: var(--ink);
+}
+
+/* Validation States - using capstone colors */
+/* :user-invalid - only show after user interaction */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: #d9534f;
+  background-color: #fef8f7;
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus,
+textarea:user-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.1);
+}
+
+/* :user-valid - only show after user interaction */
+input:user-valid,
+select:user-valid,
+textarea:user-valid {
+  border-color: #5cb85c;
+  background-color: #f7fdf7;
+}
+
+input:user-valid:focus,
+select:user-valid:focus,
+textarea:user-valid:focus {
+  box-shadow: 0 0 0 3px rgba(92, 184, 92, 0.1);
+}
+
+/* Error Messages */
+.error-message {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin-top: var(--space-xs);
+  min-height: 18px;
+  font-weight: 500;
+  display: none;
+}
+
+input:user-invalid ~ .error-message,
+select:user-invalid ~ .error-message,
+textarea:user-invalid ~ .error-message {
+  display: block;
+}
+
+/* Success Message */
+.success-message {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  font-weight: 500;
+  margin-top: var(--space-md);
+  display: none;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.success-message.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+button[type="submit"],
+button[type="reset"] {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  flex: 1;
+}
+
+button[type="submit"] {
+  background-color: var(--pine-dark);
+  color: white;
+  border-color: var(--pine-dark);
+}
+
+button[type="submit"]:hover {
+  background-color: var(--pine);
+  border-color: var(--pine);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+button[type="reset"] {
+  background-color: transparent;
+  color: var(--pine-dark);
+  border-color: var(--pine-dark);
+}
+
+button[type="reset"]:hover {
+  background-color: var(--stone);
+  border-color: var(--pine-dark);
+}
+
+button[type="reset"]:active {
+  transform: translateY(1px);
+}
+
+/* Focus visible for keyboard navigation */
+button:focus-visible {
+  outline: 2px solid var(--pine-dark);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--pine-dark);
+  outline-offset: -2px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .form-container {
+    padding: var(--space-sm);
+  }
+
+  fieldset {
+    padding: var(--space-sm);
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
